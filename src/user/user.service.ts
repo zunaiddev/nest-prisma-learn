@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { LogService } from './log.service.js';
 
 @Injectable()
 export class UserService {
@@ -9,10 +8,7 @@ export class UserService {
     { id: 3, name: 'Thor' },
   ];
 
-  constructor(private readonly loggerService: LogService) {}
-
   getAllUsers() {
-    this.loggerService.log('Getting all users');
     return this.list;
   }
 }
