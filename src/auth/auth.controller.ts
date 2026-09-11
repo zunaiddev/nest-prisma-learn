@@ -7,7 +7,7 @@ import { LoginResponseDto } from './dto/login-response.dto.js';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(private readonly authService: AuthService) {}
 
   @Post('signup')
   async signup(@Body() signupReq: SignupRequestDto): Promise<SignupResponseDto> {

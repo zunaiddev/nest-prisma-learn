@@ -1,6 +1,15 @@
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+
 export class LoginRequestDto {
-  constructor(
-    public readonly email: string,
-    public readonly password: string,
-  ) {}
+  @IsEmail()
+  public readonly email: string;
+
+  @IsString()
+  @IsNotEmpty()
+  public readonly password: string;
+
+  constructor(email: string, password: string) {
+    this.email = email;
+    this.password = password;
+  }
 }
