@@ -9,13 +9,13 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()
-  getUser(@Req() req: any) {
-    return this.userService.getUser(req['id']);
+  async getUser(@Req() req: any) {
+    return await this.userService.getUser(req['id']);
   }
 
   @Delete()
   @HttpCode(HttpStatus.NO_CONTENT)
-  deleteUser(@Body() passwordReq: DeleteUserDto, @Req() req: any): void {
-    this.userService.deleteUser(req['id'], passwordReq.password);
+  async deleteUser(@Body() passwordReq: DeleteUserDto, @Req() req: any): Promise<void> {
+    await this.userService.deleteUser(req['id'], passwordReq.password);
   }
 }
